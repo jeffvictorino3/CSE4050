@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>JSON Test</title>
+</head>
+<body>
+	<p>
+		This is a file with a script element.
+	</p>
+	<script type="text/javascript">
+		// o1 => s1
+		const o1 = { x: 3, y: -4 };
+		console.log(o1);
+		const s1 = JSON.stringify(o1);
+		console.log(s1);
+		
+		// s2 => o2
+		const s2 = '{ "a": 33, "b": 99}';
+		console.log(s2);
+		const o2 = JSON.parse(s2);
+		console.log(o2);
+		console.log(o2.a);
+		
+		// let allows you to change variable's data
+		let o3 = { z: 5};
+		console.log(o3);
+		o3 = {z: 10};
+		console.log(o3);
+		
+		let companies =
+		`[
+			{
+				"name": "Big Corporation",
+				"numberOfEmployees": 10000,
+				"ceo": "Mary",
+				"rating": 3.6
+			},
+			{
+				"name": "Small Startup",
+				"numberOfEmployees": 3,
+				"ceo": null,
+				"rating": 4.3
+			}
+		]`;
+		
+		console.log(companies);
+		console.log(JSON.parse(companies));
+		console.log(JSON.parse(companies)[1].name);
+		
+		var person = { name: "Brad", age: 35 };
+		// only works on objects, not strings
+		console.log(person.name);
+	</script>
+</body>
+</html>
