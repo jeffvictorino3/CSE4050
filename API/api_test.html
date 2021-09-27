@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>API Assignment</title>
+</head>
+
+<body>
+	<h3>Sunset and Sunrise Times for San Bernardino</h3>
+
+	<div id="today-date"></div>
+	<div id="next-sunrise"></div>
+	<div id="next-sunset"></div>
+	<script>
+		const today = new Date();
+		m1 = today.getMonth() + 1;
+		console.log(today);
+		document.getElementById("today-date").innerHTML =
+				"Today is " + m1 + "/" + today.getDate()
+				+ "/" + today.getFullYear();
+				
+		fetch("https://api.sunrise-sunset.org/json?lat=34.1083&lng=-117.2898&formatted=0&date=today")
+		.then(response => response.json())
+		.then(data => {
+			console.log(data);
+			
+			const sunrise = new Date(data.results.sunrise);
+			m2 = sunrise.getMonth() + 1;
+			console.log(sunrise);
+			document.getElementById("next-sunrise").innerHTML = 
+				"Sunrise for " + m2 + "/" + sunrise.getDate()
+				+ "/" + sunrise.getFullYear() + " in San Bernardino is " 
+				+ sunrise.getHours() + ':' + sunrise.getMinutes();
+			
+			const sunset = new Date(data.results.sunset);
+			m3 = sunset.getMonth() + 1;
+			console.log(sunset);
+			document.getElementById("next-sunset").innerHTML = 
+				"Sunset for " + m3 + "/" + sunset.getDate()
+				+ "/" + sunset.getFullYear() + " in San Bernardino is " 
+				+ sunset.getHours() + ':' + sunset.getMinutes();
+		});
+	</script>
+</body>
+</html>
